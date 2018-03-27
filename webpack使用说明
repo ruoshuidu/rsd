@@ -10,3 +10,4 @@
 10.在src/js下面有个entry.js和tool.js
 11.entry.js 依赖于tool.js  然后需要把他俩打包成一个文件
 12.单独摘出来配置文件webpack.config.js他就是个说明书，内容自己规定，你配置什么他就按照什么打包。
+13.打包命令：webpack
