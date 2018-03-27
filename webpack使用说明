@@ -1,0 +1,12 @@
+1.打开命令，window+R 然后打开cmd；
+2.nom install webpack -g 若提示是 “npm不是外部命令,也不是可运行的程序或者批处理文件” 
+3.这时，先下载一个node,因为npm是node提供的。node下载安装时，直接下一步下一步就行，不需要改名字改路径。
+4.下完安装完成node后，在命令行中执行“node -v”命令,会返回一个版本号
+5.然后开始使用webpack 先安装一下  “npm install webpack -g”;
+6.执行"webpack -v"查看一下版本号;
+7.然后开始新建文件夹进行操作。执行第一个命令，“cd 拖进来新建的文件夹”；然后回车，这时，光标会定义在新建的文件夹后。
+8.然后初始化一下，“npm init"  出来一个package name:(webpack1) 然后一路回车 
+9.这时，文件夹里多了一个package.json文件
+10.在src/js下面有个entry.js和tool.js
+11.entry.js 依赖于tool.js  然后需要把他俩打包成一个文件
+12.单独摘出来配置文件webpack.config.js他就是个说明书，内容自己规定，你配置什么他就按照什么打包。
