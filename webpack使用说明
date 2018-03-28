@@ -12,3 +12,23 @@
 11.entry.js 依赖于tool.js  然后需要把他俩打包成一个文件
 12.单独摘出来配置文件webpack.config.js他就是个说明书，内容自己规定，你配置什么他就按照什么打包。
 13.打包命令：webpack
+
+chunkhash:8   :文件对应的模块发生改变了，chunkhash对应的输出模块跟着改变，不变的不改变
+hash:8  :只要文件发生改变，所有文件名都变
+
+14.“webpack -w” 指令的意思：监听。只要一改变，一保存文件，就会自动帮你打包。两遍ctrl +c 就退出来了
+15.webpack loader加载器  先执行"npm install babel-loader"  他是用来解析不能识别的如less img等
+16.然后再执行“npm install babel babel-core”;
+
+
+
+
+
+
+
+
+
+
+
+
+
