@@ -19,7 +19,8 @@ hash:8  :只要文件发生改变，所有文件名都变
 14.“webpack -w” 指令的意思：监听。只要一改变，一保存文件，就会自动帮你打包。两遍ctrl +c 就退出来了
 15.webpack loader加载器  先执行"npm install babel-loader"  他是用来解析不能识别的如less img等
    下载loader时最好加上--save-dev 比如下载jquery 时 npm install jQuery --save -dev;方便给别人的时候，直接执行一步npm init 初始化一下即可，在一开始的时候，
-   npm init会生成一个package.json文件，现在有这个文件了，然后再初始化一下，就会把你下载的所有的东西都加载过来。
+   npm init会生成一个package.json文件，现在有这个文件了，然后再初始化一下，就会把你下载的所有的东西都加载过来。也就是说给别人的时候，不需要把生成的那个
+   node_modules文件夹给别人。
 16.然后再执行“npm install babel babel-core”;
 
 
