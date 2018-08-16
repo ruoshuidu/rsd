@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <!-- <link href="https://cdn.bootcss.com/mui/3.7.1/css/mui.css" rel="stylesheet"> -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+            #app{
+                padding: 10px;
+                position: relative;
+            }
+            .mail-list{
+                font-size: 16px;
+            }
+            .listArea{
+            	position: absolute;
+            	top: 0;	
+            	left: 0;
+            	background: #fff;
+            	width: 100%;
+            	padding: 10px;
+            	box-sizing: border-box;
+            	
+            }
+            .mode{
+                border-bottom: 1px solid #ccc;
+                font-size: 14px;
+                height:30px;line-height:30px
+            }
+            .name{
+            	width:30%;
+            	display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <button @click="getMailList" class="mail-list">通讯录</button>
+            <div v-show="!isShow">{{ namePhone }}</div>
+            <ul class="listArea" v-show="isShow">
+                <li class="mode" @click="backPhone(item.phone)" v-for="item in arr">
+                	<span class="name">{{item.person}}</span>
+                	<span>{{item.phone}}</span>
+                </li>
+            </ul>
+        </div>
+        <script src="https://cdn.bootcss.com/mui/3.7.1/js/mui.min.js"></script>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                data:{
+                    isShow: false,
+                    namePhone: '',
+                    arr: []
+                },
+                mounted() {
+                    
+                },
+                methods: {
+                    getMailList() {
+                    	this.isShow = true;
+                        mui.init();
+                        mui.plusReady(() => {
+                            plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, (addressbook) => {
+                                addressbook.find(["displayName", "phoneNumbers"],(contacts) => {
+                                  for(var i = 0, len = contacts.length; i < len; i++) {
+                                     this.arr.push({
+                                     	person:contacts[i].displayName,
+                                     	phone: (contacts[i].phoneNumbers.length == 0 ? "" : contacts[i].phoneNumbers[0].value)
+                                     });
+                                 }
+                                }, function() {
+                                    mui.toast("获取电话簿失败 ");
+                                }, {
+                                    multiple: true
+                                });
+                            }, function(e) {
+                                mui.toast("获取电话簿失败 " + e.message);
+                            });
+                        });
+                    },
+                    backPhone (num) {
+                    	this.isShow = false;
+                    	this.namePhone = num
+                    }
+                }
+            })
+            
+
+        </script>
+        
+    </body>
+
+</html>
